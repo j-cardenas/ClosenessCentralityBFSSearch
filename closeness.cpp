@@ -43,18 +43,18 @@ int Graph::breadthFirstSearch(int s)
          }
       }
       u.visitation = VISITED;
-      //cout << region[u.id].id << " at level " << region[u.id].distance <<'\n';
+     // cout << region[u.id].id << " at level " << region[u.id].distance <<'\n';
       //Calculates total distance
       totalDistance = totalDistance + region[u.id].distance;
     
    }
-   cout << "Total Distance for ["<<s<<"]: " <<totalDistance;
+   cout << "Total Distance for ["<<s<<"]: " <<totalDistance<<endl;
    
    //resetting all nodes back to NOTVISITED to run program again
-   for(int i =0; i<5; ++i){
-   region[i].visitation = NOTVISITED;
-   
-  }
+   for(int i =0; i<totalRegions; ++i){
+   region[i].visitation = NOTVISITED;}
+
+   //int return with total distance
   return totalDistance;
 
 }

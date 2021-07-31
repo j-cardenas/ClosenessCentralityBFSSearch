@@ -24,7 +24,7 @@ class Graph
 
      structRegion(int _id) : id(_id),
                        visitation(Status::NOTVISITED),
-                       distance(0)
+                       distance()
                        {}
   };
 

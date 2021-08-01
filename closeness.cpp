@@ -1,6 +1,10 @@
 #include "closeness.h"
+#include<bits/stdc++.h>
+
 
 using namespace std;
+
+
 
 
 //constructor
@@ -22,7 +26,7 @@ void Graph::addEdge(int src, int dest)
    adjList[dest].push_back(src);
 }
 
-int Graph::breadthFirstSearch(int s)
+int Graph::closenessCentrality(int s)
 {
   int totalDistance =0; 
    region[s].visitation = FOUND; //automatically finds s
@@ -43,7 +47,7 @@ int Graph::breadthFirstSearch(int s)
          }
       }
       u.visitation = VISITED;
-     // cout << region[u.id].id << " at level " << region[u.id].distance <<'\n';
+      cout << region[u.id].id << " at level " << region[u.id].distance <<'\n';
       //Calculates total distance
       totalDistance = totalDistance + region[u.id].distance;
     
@@ -58,3 +62,5 @@ int Graph::breadthFirstSearch(int s)
   return totalDistance;
 
 }
+
+

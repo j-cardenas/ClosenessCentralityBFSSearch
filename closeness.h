@@ -11,6 +11,8 @@
 using namespace std;
 
 
+
+
 class Graph
 {
   int totalRegions;
@@ -35,8 +37,10 @@ class Graph
 
   Graph(int);
   void addEdge(int, int);
-  int breadthFirstSearch(int);
+  int closenessCentrality(int);
+ 
 };
+
 
 
 #endif

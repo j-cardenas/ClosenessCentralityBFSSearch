@@ -1,84 +1,55 @@
 
 #include "closeness.h"
 
+#include<bits/stdc++.h>
+
+bool sortbyCloseness(const pair<int,int> &a,
+              const pair<int,int> &b)
+{
+    return (a.second < b.second);
+}
+
+
 int main()
 {
-   int numRegions = 9;
-   Graph reg(numRegions);
-   reg.addEdge((1-1), (4-1));
-   reg.addEdge((1-1), (5-1));
-   reg.addEdge((2-1), (3-1));
-   reg.addEdge((2-1), (9-1));
-   reg.addEdge((3-1), (2-1));
-   reg.addEdge((3-1), (8-1));
-   reg.addEdge((4-1), (1-1));
-   reg.addEdge((4-1), (7-1));
-   reg.addEdge((5-1), (1-1));
-   reg.addEdge((5-1), (8-1));
-   reg.addEdge((6-1), (7-1));
-   reg.addEdge((6-1), (9-1));
-   reg.addEdge((7-1), (4-1));
-   reg.addEdge((7-1), (6-1));
-   reg.addEdge((8-1), (3-1));
-   reg.addEdge((8-1), (5-1));
-   reg.addEdge((9-1), (2-1));
-   reg.addEdge((9-1), (6-1));
-   
+   int numRegions = 5; //number of regions
+   int arr[numRegions]; //Region
+   int arr1[numRegions]; //Distance
+   int arr3[numRegions]; //FINAL
+   Graph reg(numRegions); //Constructor
+  vector< pair <int, int> > pa1r; //Cloness Centrality
+
+  //Linked list
+   reg.addEdge(0, 1);
+   reg.addEdge(0, 4);
+   reg.addEdge(1, 3);
+   reg.addEdge(1, 4);
+   reg.addEdge(1, 2);
+   reg.addEdge(2, 3);
+   reg.addEdge(3, 4);
 
 
 
-
-   cout <<"It begins "<<endl;
-pair <int, int> p[numRegions];
-/*
-int arr[numRegions];
-double inverse[numRegions];
-int min;
-int y=0;
-int temp;
-*/
-
-
+//populates array with ID and Distance
   for(int i =0; i<numRegions; ++i){
-  p[i].first = i;
-  p[i].second = reg.breadthFirstSearch(i);
+    arr[i] = i;
+    arr1[i] = reg.closenessCentrality(i);
   }
 
+//Pushes array into pair
+int n = sizeof(arr)/sizeof(arr[0]);
+for (int i=0; i<n; i++)
+  pa1r.push_back( make_pair(arr[i],arr1[i]) );
 
+//Sorts vector by second element
+sort(pa1r.begin(), pa1r.end(), sortbyCloseness);
 
+//Close Centrality Order
+    for (int i=0; i<n; i++)
+     arr3[i] = pa1r[i].first;
   
 
-/*for(int i=0;i<numRegions;i++)
-	{		
-		for(int j=i+1;j<numRegions;j++)
-		{
-
-      if (arr[i]==arr[j])
-      {
-        
-      }
-			if(arr[i]>arr[j])
-			{
-				temp  =arr[i];
-				arr[i]=arr[j];
-				arr[j]=temp;
-			}
-		}
-	}
-
-  for(int i=0;i<numRegions;i++)
-		cout<<arr[i]<<"\t";
-	cout<<endl;	
-	
-
-  cout << "Order :"<<endl;
-  for(int i =0; i<numRegions; ++i){
- 
- 
-
-  }
- */
-
+return 0;
 
 }
 

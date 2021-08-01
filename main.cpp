@@ -1,6 +1,6 @@
 
 #include "closeness.h"
-
+#include "centrality.h"
 #include<bits/stdc++.h>
 
 bool sortbyCloseness(const pair<int,int> &a,
